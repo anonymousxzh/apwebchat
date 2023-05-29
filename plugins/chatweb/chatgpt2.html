@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ChatGPT - Apple 官网</title>
+    <link rel="stylesheet" href="../../applestyles.css">
+    <link rel="stylesheet" href="../../ToolBoxAudio.css">
+    <style>
+        /* 新的CSS样式 */
+        body {
+            background-color: rgb(82, 44, 112);
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 80px;
+            /* 增加底部 padding */
+            box-sizing: border-box;
+            /* 修正盒模型计算 */
+        }
+
+
+        #chatLog {
+            position: fixed;
+            top: 30px;
+            bottom: 140px;
+            left: 15%;
+            right: 0%;
+            overflow-y: scroll;
+            border: 0 solid #17021c;
+            padding: 10px;
+        }
+
+
+        .api-input {
+            margin-top: 80px;
+        }
+
+        .message.user-message,
+        .message.bot-message {
+            margin-top: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        input[type="text"],
+        button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background-color: transparent;
+            color: #fff;
+            transition: border-color 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .taskbar.expanded {
+            width: 200px;
+        }
+
+        /* 新增样式 */
+        .message {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* 新增样式 */
+        .message .role {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* 新增样式 */
+        .message.user-message .role {
+            color: #007bff;
+        }
+
+        /* 新增样式 */
+        .message.bot-message .role {
+            color: #17a2b8;
+        }
+
+        #messageForm {
+            /* 添加特定文本输入框的样式 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #messageInput {
+            /* 添加特定文本输入框的样式 */
+            background-color: #fff;
+            color: #000;
+            width: 800px;
+            height: 20px;
+            left: 10%;
+            right: 0;
+            align-items: center;
+        }
+
+
+        /* 新增样式 */
+        .taskbar {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 10%;
+            height: 100%;
+            background-color: rgb(37, 11, 66);
+            border-radius: 10px;
+            padding: 10px;
+            transition: width 0.5s ease;
+            overflow: hidden;
+        }
+
+        /* 新增样式 */
+        .taskbar-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        /* 新增样式 */
+        .taskbar-content {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* 新新增样式 */
+        .taskbar.expanded .taskbar-content {
+            display: block;
+        }
+
+        .user-message form {
+            position: fixed;
+            bottom: 40px;
+            left: 15%;
+            right: 15%;
+            /* display: flex; */
+            align-items: center;
+            /* justify-content: center; */
+            /* margin-bottom: 20px; */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0);
+            /* 背景透明度调整 */
+        }
+
+        .user-message form p {
+            color: white;
+            font-size: 12px;
+        }
+
+
+        /* 新的CSS样式 */
+        .user-message.form input[type="text"] {
+            flex-grow: 1;
+        }
+
+        .message.user-message .form {
+            margin-left: 10px;
+        }
+        
+
+    </style>
+
+</head>
+
+<body>
+    <header> 
+        <!-- 导航栏 -->
+        <nav>
+            <ul>
+                <li><a href="../../index.html"><img src="../../applewebuiimg/apple-icon.png" alt="Apple-icon"></a></li>
+                <li><a href="../../Mac.html">Mac</a></li>
+                <li><a href="../../ipad.html">iPad</a></li>
+                <li><a href="../../iPhone.html">iPhone</a></li>
+                <li><a href="../../Watch.html">Watch</a></li>
+                <li><a href="../../TV.html">TV</a></li>
+                <li><a href="../../Music.html">Music</a></li>
+                <li><a href="../../Support.html">Support</a></li>
+                <li><a href="../../plugins/chatweb/chatgpt2.html">ChatGPT</a></li>
+                <li class="../../toolbox">
+                    <div class="toolbox-container">
+                        <a href="../../toolbox.html">ToolBox</a>
+                        <div class="dropdown">
+                            <div class="menu-item"><a href="进制转换器.html">进制转换器</a></div>
+                            <div class="menu-item"><a href="#">工具2</a></div>
+                            <div class="menu-item"><a href="#">工具3</a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <audio controls autoplay>
+                        <source src="../../music/Lights & Motion - Anomaly.mp3" type="audio/mpeg">
+                    </audio>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="ymh1">
+        <h1>ChatGPT</h1>
+    </div>
+    <!-- 具体内容 -->
+
+    <div class="taskbar" id="taskbar">
+        <div class="api-input">
+            <button class="taskbar-button" onclick="toggleAPIKeyInput()">API Key</button>
+            <div class="taskbar-content" id="apiKeyInput" style="max-height: 0;">
+                <!-- API Key内容 -->
+                <label for="apiInput">API Key:</label>
+                <input type="text" id="apiInput" placeholder="Enter your API key">
+                <button id="initializeBtn" onclick="initializeChat()">Initialize</button>
+            </div>
+        </div>
+        <div class="api-input">
+            <button class="taskbar-button" onclick="togglePluginModule()">Plugin Module</button>
+
+            <div class="taskbar-content" id="pluginModule" style="max-height: 0;">
+                <!-- 插件模块内容 -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="chatLog"></div>
+
+        <div class="user-message form">
+            <form id="messageForm">
+                <input type="text" id="messageInput" placeholder="Type your message here" autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+
+    </div>
+
+    <script>
+        const chatLog = document.getElementById('chatLog');
+        const messageForm = document.getElementById('messageForm');
+        const messageInput = document.getElementById('messageInput');
+        const apiInput = document.getElementById('apiInput');
+        const taskbar = document.getElementById('taskbar');
+        const apiKeyInput = document.getElementById('apiKeyInput');
+        const pluginModule = document.getElementById('pluginModule');
+        let apiKey = '';
+        let initialized = false;
+        let isAPIKeyInputExpanded = false;
+        let isPluginModuleExpanded = false;
+
+        function scrollToBottom() {
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function initializeChat() {
+            apiKey = apiInput.value.trim(); // 获取 API Key
+            // 检查 API Key 是否为空
+            if (apiKey === '') {
+                appendMessage('Please enter your API key.', 'bot');
+                return;
+            }
+
+            appendMessage('Chat initialized. You can start messaging now.', 'bot');
+            initialized = true;
+        }
+
+        async function sendMessage(message) {
+            // 检查是否已初始化聊天
+            if (!initialized) {
+                appendMessage('Please initialize chat by entering your API key.', 'bot');
+                return;
+            }
+
+            // 发送请求到 OpenAI ChatGPT API
+            const apiUrl = 'https://api.openai.com/v1/chat/completions'; // OpenAI ChatGPT API 的地址
+            const data = {
+                model: 'gpt-3.5-turbo', // ChatGPT 模型
+                messages: [
+                    { role: 'system', content: 'You are a helpful assistant.' },
+                    { role: 'user', content: message }
+                ]
+            };
+
+            // 使用 fetch 发送 POST 请求
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + apiKey // 使用 API Key 进行身份验证
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            const botReply = result.choices[0].message.content;
+            displayBotReply(botReply);
+        }
+
+        function appendMessage(message, role) {
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('message', role + '-message');
+
+            // 新增发送者标识
+            const roleSpan = document.createElement('span');
+            roleSpan.classList.add('role');
+            roleSpan.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+
+            messageContainer.appendChild(roleSpan);
+
+            const messageText = document.createTextNode(message);
+            messageContainer.appendChild(messageText);
+
+            chatLog.appendChild(messageContainer);
+        }
+
+        async function displayBotReply(botReply) {
+            const botMessageContainer = document.createElement('div');
+            botMessageContainer.classList.add('message', 'bot-message');
+
+            // 创建机器人名字的元素
+            const roleSpan = document.createElement('span');
+            roleSpan.classList.add('role');
+            roleSpan.textContent = 'Bot';
+
+            botMessageContainer.appendChild(roleSpan);
+            chatLog.appendChild(botMessageContainer);
+
+            const replyContainer = document.createElement('span'); // 新增的元素用于包含机器人回复
+            botMessageContainer.appendChild(replyContainer);
+
+            for (let i = 0; i < botReply.length; i++) {
+                await sleep(50); // 每个字符间隔 50ms
+                replyContainer.textContent += botReply[i];
+                chatLog.scrollTop = chatLog.scrollHeight; // 自动滚动到底部
+            }
+
+            chatLog.scrollTop = chatLog.scrollHeight; // 添加额外的滚动到底部，确保内容被完全显示
+        }
+
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // 新增消息提交事件监听
+        messageForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (message !== '') {
+                appendMessage(message, 'user');
+                sendMessage(message);
+                messageInput.value = '';
+            }
+            chatLog.scrollTop = chatLog.scrollHeight; // 自动滚动到底部
+        });
+
+        function toggleAPIKeyInput() {
+            isAPIKeyInputExpanded = !isAPIKeyInputExpanded;
+            if (isAPIKeyInputExpanded) {
+                apiKeyInput.style.display = 'block';
+                taskbar.classList.add('expanded');
+                pluginModule.style.display = 'none';
+            } else {
+                apiKeyInput.style.display = 'none';
+                taskbar.classList.remove('expanded');
+            }
+        }
+
+        function togglePluginModule() {
+            isPluginModuleExpanded = !isPluginModuleExpanded;
+            if (isPluginModuleExpanded) {
+                pluginModule.style.display = 'block';
+                taskbar.classList.add('expanded');
+                apiKeyInput.style.display = 'none';
+            } else {
+                pluginModule.style.display = 'none';
+                taskbar.classList.remove('expanded');
+            }
+        }
+    </script>
+
+    <footer style="background-color:rgba(0, 0, 0, 0.5)">
+        <p style="color: white;">&copy; 2023 Apple Inc. 保留所有权利。</p>
+    </footer>
+</body>
+
+</html>

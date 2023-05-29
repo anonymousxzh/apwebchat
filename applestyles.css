@@ -1,0 +1,229 @@
+/* styles.css */
+
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* user-select: none; */
+    /* cursor: none; */
+    /* outline: none; */
+    caret-color: transparent;
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav ul li img{
+    filter: invert(100%);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    font-size: inherit;
+    display: flex;
+}
+
+/* 苹果产品大图样式 */
+.hero {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* 苹果产品大图2样式 */
+.hero2 {
+    position: relative;
+}
+
+.hero-image2 img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-content2 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+}
+
+
+.hero-content2 h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.hero-content2 p {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.cta-button2 {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* 苹果产品大图3样式 */
+.hero3 {
+    position: relative;
+}
+
+.hero-image3 img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-content3 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+}
+
+
+.hero-content3 h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.hero-content3 p {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.cta-button3 {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+.ymh1{
+    margin-top: 50px; /* 考虑到导航栏固定在页面顶部，将每个页面的头部h1描述向下50px */
+}
+
+.WangGeBuJu {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+/* 产品特点样式 */
+.features {
+    display: flex;
+    justify-content: center;
+    /* padding: 50px 0; */
+}
+
+.feature {
+    text-align: center;
+    /* margin: 0 20px; */
+}
+
+.feature img {
+    width: 730px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #f5f5f5;
+    text-align: center;
+    color: black;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1px;
+    font-size: 16px;
+}
+
+
+nav ul li:first-child a img {
+    height: 1em;
+    margin-right: 0.25em;
+    order: -1;
+}

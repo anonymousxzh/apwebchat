@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="applestyles.css">
+    <title>进制转换器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+
+        #converter {
+            margin: 0 auto;
+            width: 300px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- 导航栏 -->
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="applewebuiimg/apple-icon.png" alt="Apple-icon"></a></li>
+                <li><a href="Mac.html">Mac</a></li>
+                <li><a href="ipad.html">iPad</a></li>
+                <li><a href="iphone.html">iPhone</a></li>
+                <li><a href="watch.html">Watch</a></li>
+                <li><a href="tv.html">TV</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="plugins/chatweb/chatgpt2.html">ChatGPT</a></li>
+                <li><a href="进制转换器.html">进制转换器</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="ymh1">
+        <h1>进制转换器</h1>
+    </div>
+
+    <div id="converter">
+        <input type="number" id="inputNumber" placeholder="输入一个整数">
+        <select id="fromBase">
+            <option value="2">二进制</option>
+            <option value="8">八进制</option>
+            <option value="10" selected>十进制</option>
+            <option value="16">十六进制</option>
+        </select>
+        <select id="toBase">
+            <option value="2">二进制</option>
+            <option value="8">八进制</option>
+            <option value="10" selected>十进制</option>
+            <option value="16">十六进制</option>
+        </select>
+        <button onclick="convert()">转换</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            var inputNumber = document.getElementById("inputNumber").value;
+            var fromBase = document.getElementById("fromBase").value;
+            var toBase = document.getElementById("toBase").value;
+
+            // 转换为十进制
+            var decimalNumber = parseInt(inputNumber, fromBase);
+
+            // 根据目标进制进行转换
+            var result = decimalNumber.toString(toBase);
+
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+
+    <footer>
+        <!-- 页脚 -->
+        <p>&copy; 2023 Apple Inc. 保留所有权利。</p>
+    </footer>
+</body>
+
+</html>

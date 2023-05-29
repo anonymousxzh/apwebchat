@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>客服咨询</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .chat-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-log {
+      height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .message .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .message .text {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .typing-indicator .dot {
+      width: 8px;
+      height: 8px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin-right: 4px;
+      animation: typing-dot-animation 1s infinite;
+    }
+
+    .typing-indicator .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-indicator .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing-dot-animation {
+      0% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.4;
+      }
+    }
+
+    .user-input {
+      display: flex;
+    }
+
+    .user-input input[type="text"] {
+      flex-grow: 1;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .user-input button {
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chat-container">
+    <div id="chatLog" class="chat-log"></div>
+    <div class="user-input">
+      <input type="text" id="messageInput" placeholder="在此输入您的问题">
+      <button id="sendButton">发送</button>
+    </div>
+  </div>
+
+  <script>
+    const chatLog = document.getElementById('chatLog');
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+    let isTyping = false;
+
+    sendButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', startTyping);
+
+    function sendMessage() {
+      const message = messageInput.value;
+      if (message.trim() !== '') {
+        appendMessage('user', message);
+        messageInput.value = '';
+        stopTyping();
+        simulateBotReply();
+      }
+    }
+
+    function appendMessage(sender, text) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message');
+      const avatar = sender === 'user' ? 'user-avatar.png' : 'bot-avatar.png';
+      const typingIndicator = isTyping && sender !== 'user' ? '<div class="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>' : '';
+      messageElement.innerHTML = `
+        < img class="avatar" src="${avatar}" alt="${sender} Avatar">
+        <div class="text">
+          ${typingIndicator}
+          ${text}
+        </div>
+      `;
+      chatLog.appendChild(messageElement);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function startTyping() {
+      if (!isTyping) {
+        isTyping = true;
+        simulateBotTyping();
+      }
+    }
+
+    function stopTyping() {
+      isTyping = false;
+    }
+
+    function simulateBotTyping() {
+      appendMessage('bot', '正在输入中...');
+      setTimeout(function() {
+        if (isTyping) {
+          appendMessage('bot', '正在输入中...');
+          simulateBotTyping();
+        }
+      }, 2000);
+    }
+
+    function simulateBotReply() {
+      appendMessage('bot', '这是机器人的回复');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+.toolbox {
+    position: relative;
+    display: inline-block;
+}
+
+.toolbox-container{
+    
+}
+
+.toolbox:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 1465px;
+    height: 500px;
+    left: -900px;
+    background-color: rgb(0,0,0,0.7);
+    border: 0 solid #ccc;
+    padding: 10px;
+}
+
+.dropdown li {
+    margin-bottom: 5px;
+}
+
+audio {
+height: 30px;
+padding: 5px;
+}

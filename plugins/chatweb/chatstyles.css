@@ -1,0 +1,142 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 导航栏样式 */
+  nav {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    font-size: inherit;
+    display: flex;
+  }
+  
+  /* 苹果产品大图样式 */
+  .hero {
+    position: relative;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+  }
+  
+  .hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+  }
+  
+  .hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  /* 页脚样式 */
+  footer {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  nav ul li:first-child a img {
+    height: 1em;
+    margin-right: 0.25em;
+    order: -1;
+  }
+  
+  /* 新的对话内容样式 */
+  #chatLog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 300px);
+    overflow-y: scroll;
+    border: 1px solid #17021c;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+  
+  /* 新的用户输入框样式 */
+  .user-input {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-input input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .user-input input[type="text"]:focus {
+    outline: none;
+    border-color: #fff;
+  }
+  
+  .user-input button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .user-input button:hover {
+    background-color: #0056b3;
+  }
